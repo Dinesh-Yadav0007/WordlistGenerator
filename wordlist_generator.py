@@ -3,13 +3,13 @@ import optparse
 
 def generate_wordlist(letters, min_length, max_length, filename):
     count = 0
-    with open(filename, 'w') as file:
-        for n in range(min_length, max_length + 1):
-            for combinations in itertools.product(letters, repeat=n):
-                file.write(''.join(combinations) + '\n')
+    with open(filename, 'w') as file:  #Open the file in write mode to save the wordlist
+        for n in range(min_length, max_length + 1):  #Iterate through each length from min_length to max_length
+            for combinations in itertools.product(letters, repeat=n):  #Generate combinations of letters of length n
+                file.write(''.join(combinations) + '\n')  #Write each combination as a word to the file
                 count += 1
     return count
-def parameters():
+def parameters(): #Function to parse command-line arguments.
     parser = optparse.OptionParser()
     parser.add_option("--c", dest="characters", help="please specify the letters that you want to create a wordlist")
     parser.add_option("--min", dest="min_length", type="int", help="minimum length that you want to create a wordlist")
